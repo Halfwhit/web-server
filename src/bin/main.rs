@@ -1,7 +1,7 @@
 use std::net::{TcpListener, TcpStream};
 use std::io::prelude::*;
-use std::{fs, thread};
 use web_server::ThreadPool;
+use std::fs;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
@@ -14,6 +14,8 @@ fn main() {
             handle_connection(stream);
         });
     }
+
+    println!("Server shutting down.");
 }
 
 fn handle_connection(mut stream: TcpStream) {
